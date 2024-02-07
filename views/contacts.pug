@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p #{title}
+  a(href='/contacts/add') Add a contact
+  hr
+  if contacts.length > 0
+    div#contacts-wrapper
+      ul.contacts-list
+        each val in contacts
+          li(data-contactid=val.id)
+            p= `${val.firstName} ${val.lastName}`
+            p= `${val.email}`
+            a(href=`/contacts/${val.id}`) Edit

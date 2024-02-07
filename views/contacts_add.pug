@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p Use the form below to add a new contact.
+  hr
+  form(method='POST', action='/contacts/add')
+    label First Name: 
+      | 
+      input(type='text' name='contactFirstName')
+    br
+    br
+    label Last Name: 
+      | 
+      input(type='text' name='contactFirstName')
+    br
+    br
+    label Email:
+      | 
+      input(type='text' name='contactEmail')
+    br
+    br
+    label Notes:  
+      |
+      textarea(name='contactNotes' rows='4')
+    br 
+    br
+    br
+    button(type='submit') Create Contact
+    | 
+    a(href='/todos') Cancel
