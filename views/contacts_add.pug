@@ -12,7 +12,7 @@ block content
     br
     label Last Name: 
       | 
-      input(type='text' name='contactFirstName')
+      input(type='text' name='contactLastName')
     br
     br
     label Email:
@@ -25,7 +25,12 @@ block content
       textarea(name='contactNotes' rows='4')
     br 
     br
+    if msg
+      each val in msg
+        ul 
+          li(class='redText')= val.msg 
+    br
     br
     button(type='submit') Create Contact
     | 
-    a(href='/todos') Cancel
+    a(href='/contacts') Cancel
