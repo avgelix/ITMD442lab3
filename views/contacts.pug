@@ -11,5 +11,10 @@ block content
         each val in contacts
           li(data-contactid=val.id)
             p= `${val.firstName} ${val.lastName}`
-            p= `${val.email}`
-            a(href=`/contacts/${val.id}`) Edit
+            if val.email !== 'undefined'
+              p= val.email
+            a(href=`/contacts/${val.id}/edit`) Edit
+            br 
+            a(href=`/contacts/${val.id}/delete`) Delete
+            br
+            br
