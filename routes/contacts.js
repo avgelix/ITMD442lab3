@@ -3,6 +3,8 @@ var router = express.Router();
 const { body, validationResult } = require("express-validator");
 const contactsRepo = require("../src/contactsFileRepository");
 
+
+
 /* GET contacts page. */
 router.get("/", function (req, res, next) {
   const data = contactsRepo.findAll();
@@ -33,7 +35,7 @@ router.post(
         return true;
       }
       // Proceed with email validation
-      return req.utils.isEmail(value);
+      return req.utils.notEmail(value);
     })
     .withMessage("Email must be a valid email address"),
   body("contactNotes").trim(),
@@ -57,6 +59,18 @@ router.post(
     }
   }
 );
+
+
+/* GET contact view. */
+router.get("/:uuid", function (req, res, next) {
+  const contact = contactsRepo.findById(req.params.uuid);
+  if (contact) {
+    res.render("contact_view", { title: "Contact Details", contact: contact });
+    console.log(contact);
+  } else {
+    redirect.redirect("/contacts");
+  }
+});
 
 /* GET contact edit. */
 router.get("/:uuid/edit", function (req, res, next) {
@@ -91,7 +105,7 @@ router.post("/:uuid/edit", function (req, res, next) {
       lastName: req.body.contactLastName.trim(),
       email: req.body.contactEmail.trim(),
       notes: req.body.contactNotes.trim(),
-      date: req.params.date
+      date: new Date()
     };
     contactsRepo.update(updatedContact);
     res.redirect("/contacts");
@@ -108,5 +122,13 @@ router.get("/:uuid/delete", function (req, res, next) {
     redirect.redirect("/contacts");
   }
 });
+
+/* POST contact delete. */
+router.post("/:uuid/delete", function (req, res, next) {
+  contactsRepo.deleteById(req.params.uuid);
+  res.redirect("/contacts");
+});
+
+
 
 module.exports = router;
