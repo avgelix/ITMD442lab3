@@ -5,16 +5,24 @@ block content
   p use the form below to edit this contact.
   hr
   form(method='POST', action=`/contacts/${contact.id}/edit`)
-    input(type='text' name='contactFirstName' value=contact.firstName)
+    label First Name: 
+      |
+      input(type='text' name='contactFirstName' value=contact.firstName)
     br
     br
-    input(type='text' name='contactLastName' value=contact.lastName)
+    label Last Name: 
+      | 
+      input(type='text' name='contactLastName' value=contact.lastName)
     br
     br
-    input(type='text' name='contactEmail' value=contact.email)
+    label Email: 
+      | 
+      input(type='text' name='contactEmail' value=contact.email)
     br
     br
-    textarea(name="contactNotes", cols="30", rows="10", value= contact.notes) 
+    label Notes: 
+      | 
+      textarea(name="contactNotes", cols="30", rows="10", value= contact.notes) 
     br
     br
     br
