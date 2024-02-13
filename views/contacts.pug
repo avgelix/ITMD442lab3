@@ -13,8 +13,6 @@ block content
             p= `${val.firstName} ${val.lastName}`
             if val.email !== 'undefined'
               p= val.email
-            a(href=`/contacts/${val.id}/edit`) Edit
+            a(href=`/contacts/${val.id}`) View Details >
             br 
-            a(href=`/contacts/${val.id}/delete`) Delete
-            br
             br

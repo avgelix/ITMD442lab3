@@ -7,6 +7,7 @@ block content
   form(method='POST', action=`/contacts/${contact.id}/delete`)
     p= `${contact.firstName} ${contact.lastName}`
     p= contact.email
+    p= contact.date
     p= contact.notes
     br
     br
@@ -15,3 +16,4 @@ block content
     button(type='submit') Delete Contact
     | 
     a(href='/contacts') Cancel 
+
