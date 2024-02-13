@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  hr
+  div#contact-wrapper
+    ul.contact-details
+      li
+        p= `${contact.firstName} ${contact.lastName}`
+        if contact.email !== 'undefined'
+          p= contact.email
+        p= contact.date
+        p= contact.notes
+        a(href=`/contacts/${contact.id}/edit`) Edit
+        br 
+        a(href=`/contacts/${contact.id}/delete`) Delete
+        br
+        br
+        br
+        br
+        a(href=`/contacts`) <
