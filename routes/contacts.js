@@ -105,7 +105,7 @@ router.post("/:uuid/edit", function (req, res, next) {
       lastName: req.body.contactLastName.trim(),
       email: req.body.contactEmail.trim(),
       notes: req.body.contactNotes.trim(),
-      date: new Date()
+      date: new Date().toLocaleDateString('en-us')
     };
     contactsRepo.update(updatedContact);
     res.redirect("/contacts");
