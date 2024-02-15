@@ -35,8 +35,9 @@ router.post(
         return true;
       }
       // Proceed with email validation
-      return req.utils.notEmail(value);
+      return value;
     })
+    .isEmail()
     .withMessage("Email must be a valid email address"),
   body("contactNotes").trim(),
   function (req, res, next) {
