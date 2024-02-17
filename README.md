@@ -34,11 +34,12 @@ I learned a lot through this lab. I had never used pug before. I was exposed to 
 I used ChatGPT to figure out how to validate email in such a way that it was not required but if the user did input something that input would be validated. I read the express-validator documentation on validation chains but could not figure it out on my own. These are the lines of code I am referring to, specifically:
 
 File: contact.js
-    .custom((value, { req }) => {
-      if (!value || value.trim() === "") {
-        // Skip email validation if value is empty
-        return true;
-      }
+
+        .custom((value, { req }) => {
+          if (!value || value.trim() === "") {
+            // Skip email validation if value is empty
+            return true;
+          }
 
 This tutorial really helped me understand how to get bootstrap to work with pug <https://www.youtube.com/watch?v=nDSpd6f8t_o>
 
