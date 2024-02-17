@@ -35,7 +35,7 @@ This is a NodeJS Express app that stores information in a JSON file. This app ca
 
 ### Insights and Results
 
-I learned a lot through this lab. I had never used pug before. I was exposed to Django in the past, so the MVC pattern we used for this project wasn't too different from the MTV pattern I remembered. Pug is very sensitive about spacing, which sometimes made me think something was wrong elsewhere in the code. The in-class demo was extremely helpful.
+I learned a lot through this lab. I had never used Pug before. I was exposed to Django in the past, so the MVC pattern we used for this project wasn't too different from the MTV pattern I remembered. Pug is very sensitive about spacing, which sometimes made me think something was wrong elsewhere in the code. The in-class demo was extremely helpful. I am happy I got to try out Bootstrap! Always wanted to play with it but never had time. I used tailwind.css briefly for a past project, so it wansn't too hard.
 
 
 ### References
