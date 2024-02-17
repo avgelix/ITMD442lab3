@@ -3,20 +3,27 @@
 ## General Information
 
 **Name:** Angela Petrone
+
 **Email:** <apetrone@hawk.iit.edu>
+
 **Class:** ITMD 442
+
 **Assignment:** lab #2
+
 **Git Repository URL:** <https://github.com/avgelix/ITMD442lab2>
+
 
 ### Project Description
 
 This is a NodeJS Express app that stores information in a JSON file. This app can be used as a phonebook to record contact information for multiple people. This is a web app and can be used in a browser. This app allows to create, delete, and edit contact information as many times as the user wants.
+
 
 ### Development Environment
 
 - computer OS: macOS
 - Node JS version number: v20.3.1
 - editors used: VSCode
+
 
 ### Installation Instructions
 
@@ -25,9 +32,11 @@ This is a NodeJS Express app that stores information in a JSON file. This app ca
 3. Run "npm i" to install dependencies
 4. Run "npm run dev" and open "localhost:3000/" in your browser
 
+
 ### Insights and Results
 
 I learned a lot through this lab. I had never used pug before. I was exposed to Django in the past, so the MVC pattern we used for this project wasn't too different from the MTV pattern I remembered. Pug is very sensitive about spacing, which sometimes made me think something was wrong elsewhere in the code. The in-class demo was extremely helpful.
+
 
 ### References
 
