@@ -1,36 +1,44 @@
 extends layout
 
 block content
-  h1= title
-  p Use the form below to add a new contact.
-  hr
-  form(method='POST', action='/contacts/add')
-    label First Name: 
+  .pt-4
+  .container
+  .text-center
+    h1= title
+    p Use the form below to add a new contact.
+    hr
+    form(method='POST', action='/contacts/add')
+      label.fw-bold First Name: 
+        | 
+        input(type='text' name='contactFirstName')
+      br
+      br
+      label.fw-bold Last Name: 
+        | 
+        input(type='text' name='contactLastName')
+      br
+      br
+      label.fw-bold Email:
+        | 
+        input(type='text' name='contactEmail')
+      br
+      br
+      label.fw-bold Notes:  
+        |
+        textarea(name='contactNotes' rows='4')
+      br 
+      br
+      if msg
+        each val in msg
+          ul 
+            li.fst-italic.text-danger= val.msg 
+      br
+      br
+      button.btn.btn-primary(type='submit') Create Contact
       | 
-      input(type='text' name='contactFirstName')
-    br
-    br
-    label Last Name: 
-      | 
-      input(type='text' name='contactLastName')
-    br
-    br
-    label Email:
-      | 
-      input(type='text' name='contactEmail')
-    br
-    br
-    label Notes:  
-      |
-      textarea(name='contactNotes' rows='4')
-    br 
-    br
-    if msg
-      each val in msg
-        ul 
-          li(class='redText')= val.msg 
-    br
-    br
-    button(type='submit') Create Contact
-    | 
-    a(href='/contacts') Cancel
+      a.btn.btn-secondary.btn-sm(href='/contacts') Cancel
+  .pt-4
+  div.fixed-bottom.bg-white
+    hr.mt-0
+    footer.small.fst-italic.text-center
+      p Copyright 2024. Angela Petrone.
