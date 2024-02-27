@@ -33,8 +33,9 @@ const repo = {
         console.log(`Rows affected: ${info.changes}`);
     },
     update: (contact) => {
-        // db.set(contact.id, contact);
-        // saveData();
+        const stmt = db.prepare("UPDATE contacts SET firstName = ?, lastName = ?, email = ?, notes = ? WHERE id = ?");
+        const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes, contact.id);
+        console.log(`Rows affected: ${info.changes}`);
     },
 };
 
