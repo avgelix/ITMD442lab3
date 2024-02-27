@@ -17,12 +17,16 @@ const repo = {
         })
         return contacts;
     },
+    findById: (uuid) => {
+        const stmt= db.prepare("SELECT * FROM contacts WHERE id = ?")
+        const row = stmt.get(uuid);
+        return new Contact(row.id, row.firstName, row.lastName, row.email, row.notes, row.date);
+    },
     create: (contact) => {
         const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes) VALUES (?, ?, ?, ?)");
         const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes);
         console.log(`contact created with id: ${info.lastInsertRowid}`);
     },
-    findById: (uuid) => db.get(uuid),
     deleteById: (uuid) => {
         // db.delete(uuid);
         // saveData();
