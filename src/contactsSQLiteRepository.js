@@ -28,8 +28,9 @@ const repo = {
         console.log(`contact created with id: ${info.lastInsertRowid}`);
     },
     deleteById: (uuid) => {
-        // db.delete(uuid);
-        // saveData();
+        const stmt = db.prepare("DELETE FROM contacts WHERE id = ?");
+        const info = stmt.run(uuid);
+        console.log(`Rows affected: ${info.changes}`);
     },
     update: (contact) => {
         // db.set(contact.id, contact);
