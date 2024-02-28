@@ -24,13 +24,15 @@ block content
         | 
         textarea(name="contactNotes", cols="30", rows="10", value= contact.notes) 
       .pt-4
+      if msg
+        each val in msg
+          ul 
+            li.fst-italic.text-danger= val.msg 
       .pt-4
       | 
       button.btn.btn-primary(type='submit') Save Changes
       | 
       a.btn.btn-secondary.btn-sm(href='/contacts') Cancel 
-    if msg
-      p(class='redText')= msg
   .pt-4
   div.fixed-bottom.bg-white
     hr.mt-0
