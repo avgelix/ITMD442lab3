@@ -27,18 +27,10 @@ router.post(
     .trim()
     .notEmpty()
     .withMessage("contact last name cannot be empty"),
-  body("contactEmail")
+  body('contactEmail')
+    .optional({ nullable: true, checkFalsy: true }) // Make the field optional and allow empty strings
     .trim()
-    .custom((value, { req }) => {
-      if (!value || value.trim() === "") {
-        // Skip email validation if value is empty
-        return true;
-      }
-      // Proceed with email validation
-      return value;
-    })
-    .isEmail()
-    .withMessage("Email must be a valid email address"),
+    .isEmail().withMessage('Invalid email address'),
   body("contactNotes").trim(),
   function (req, res, next) {
     const result = validationResult(req);
@@ -84,22 +76,31 @@ router.get("/:uuid/edit", function (req, res, next) {
 });
 
 /* POST contacts edit. */
-router.post("/:uuid/edit", function (req, res, next) {
-  if (req.body.contactFirstName.trim() === "") {
-    const contact = contactsRepo.findById(req.params.uuid);
-    res.render("contacts_edit", {
-      title: "Edit this Contact",
-      msg: "Contact first name cannot be empty!",
-      contact: contact,
-    });
-  } else if (req.body.contactLastName.trim() === "") {
-    const contact = contactsRepo.findById(req.params.uuid);
-    res.render("contacts_edit", {
-      title: "Edit this Contact",
-      msg: "Contact last name cannot be empty!",
-      contact: contact,
-    });
-   } else {
+router.post("/:uuid/edit",
+    body("contactFirstName")
+    .trim()
+    .notEmpty()
+    .withMessage("contact first name cannot be empty"),
+    body("contactLastName")
+    .trim()
+    .notEmpty()
+    .withMessage("contact last name cannot be empty"),
+    body('contactEmail')
+    .optional({ nullable: true, checkFalsy: true }) // Make the field optional and allow empty strings
+    .trim()
+    .isEmail().withMessage('Invalid email address'),
+    function (req, res, next) {
+      const result = validationResult(req);
+      const contact = contactsRepo.findById(req.params.uuid);
+      if (!result.isEmpty()) {
+        console.log(result.array());
+        /*if there is an error in the result*/
+        res.render("contacts_edit", {
+          title: "Edit this Contact",
+          msg: result.array(),
+          contact: contact,
+        });
+    } else {
     const updatedContact = {
       id: req.params.uuid,
       firstName: req.body.contactFirstName.trim(),
